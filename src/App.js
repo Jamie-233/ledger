@@ -1,43 +1,43 @@
-import logo from './logo.svg'
+import PriceList from './components/PriceList'
 import './App.css'
 
-const itmes = [
+const items = [
   {
     id: 1,
     title: 'Learning JavaScript',
-    price: '',
+    price: '400',
     date: '2022-01-10',
     category: {
       id: '1',
-      title: 'learning',
+      name: 'learning',
       type: 'income'
     }
   },
   {
     id: 2,
     title: 'Learning React',
-    price: '',
+    price: '100',
     date: '2022-01-10',
     category: {
       id: '1',
-      title: 'learning',
-      type: 'income'
+      name: 'learning',
+      type: 'outcome'
     }
   }
 ]
 
+const handleModifyItem = item => {
+  console.log(item)
+}
+
+const handleDeleteItem = item => {
+  console.log(item)
+}
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+      <PriceList items={items} onModifyItem={handleModifyItem} onDeleteItem={handleDeleteItem} />
     </div>
   )
 }
