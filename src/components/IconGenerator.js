@@ -1,24 +1,46 @@
-import { CodeSlashOutline, CreateOutline, CloseCircleOutline } from 'react-ionicons'
-
-const defaultConfig = {
-  color: '#fff',
-  cssClasses: 'rounded-circle',
-  height: '30px',
-  width: '30px'
-}
+import {
+  CodeSlashOutline,
+  CreateOutline,
+  CloseCircleOutline,
+  Newspaper,
+  PieChart
+} from 'react-ionicons';
 
 const iconsMapping = {
   code: CodeSlashOutline,
   edit: CreateOutline,
-  delete: CloseCircleOutline
-}
+  delete: CloseCircleOutline,
+  paper: Newspaper,
+  pie: PieChart
+};
 
 const IconGenerator = props => {
-  const { type, ...config } = props
+  const {
+    type,
+    className,
+    color = '#fff',
+    fontSize = '30px',
+    backgroundColor: background,
+    ...config
+  } = props;
 
-  const Icon = iconsMapping[type]
+  const style = {
+    background,
+    padding: '5px'
+  };
 
-  return Icon ? <Icon {...defaultConfig} {...config} /> : null
-}
+  const extraConfig = {
+    color,
+    style,
+    width: fontSize,
+    height: fontSize,
+    cssClasses: className,
+    ...config
+  };
 
-export default IconGenerator
+  const Icon = iconsMapping[type];
+
+  return Icon ? <Icon {...extraConfig} /> : null;
+};
+
+export default IconGenerator;
